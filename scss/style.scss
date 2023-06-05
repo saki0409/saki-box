@@ -1,0 +1,353 @@
+@charset "utf-8";/* cssファイルの1行目に記述 */
+
+@use 'normalize';/* リセットcssがある場合はそのファイルを読み込む記述 */
+
+/**
+ * ***************************************
+ * ページ全体に関わるCSS
+ * ***************************************
+ */
+ html *,
+ :before,
+ :after {
+     box-sizing: border-box;/* ボーダーもボックス内に含める */
+    }
+    
+body {
+        font-family: 'Noto Sans JP', sans-serif;
+        color: #333;  
+    }
+
+/**
+* ***************************************
+* header
+* ***************************************
+*/
+
+// ヘッダー全体
+.header-container {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4%;
+    @media (min-width: 768px) {
+        margin: 0 auto;
+        max-width: 1000px;
+        padding: 20px;
+    }
+}
+
+//  サイトタイトル
+.site-title {
+    margin: 0;/* h1のデフォルトの余白を削除 */
+    line-height: 9px;
+    font-size: 10px;
+}
+a {
+    text-decoration: none;
+    color: #333;
+    font-size: 20px;
+}
+
+.text-small {
+    margin: 0;
+    font-size: 12px;
+}
+
+
+// モバイル用ビゲーション開閉ボタン
+.navbtn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    padding: 5px 0;
+    span {
+        display: block;
+        margin: 10px;
+        border-bottom: 3px solid #333;
+    }
+    // ボタンをクリックしたときのspanの動作（三本線が×になる）
+    .trigger:nth-child(1) {
+        transform: translateY(12px) rotate(45deg);/* Y軸方向に12px移動、時計回りに45度回転 */
+        transition: .2s;/* 0.2秒の速さで */
+    }
+
+    .trigger:nth-child(2) {
+        opacity: 0;/* 真ん中の線は不要なので透明にする */
+    }
+
+    .trigger:nth-child(3) {
+        transform: translateY(-13px) rotate(-45deg);/* Y軸方向に-13px移動、半時計回りに45度回転 */
+        transition: .2s;/* 0.2秒の速さで */
+    }
+
+    @media (min-width: 768px) {
+        display: none;/* PCのときはボタンを表示しない */
+    }  
+}
+
+
+// ナビゲーション
+.header-navmenu {
+    display: none;
+    position: absolute;
+    top: 97px;
+    right: 0;
+    width: 100%;
+    z-index: 30;
+    text-align: right;
+    padding-top: 10px;
+    background: rgba(255, 255, 255, 0.8);
+    a {
+        display: block;
+        margin-left: 20px;
+        margin-right: 20px;
+        padding: 32px 0 17px;
+        font-size: 15px;
+        text-decoration: none;
+        color: #333;
+        &:hover {
+            opacity: .9;
+            text-decoration: underline;
+        }
+    }
+    @media (min-width: 768px) {
+        top: 0;
+        right: 0;
+        display: flex !important;
+        flex-direction: row;
+        justify-content: flex-end;
+        background: none;
+    }
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/**
+* ***************************************
+* main
+* ***************************************
+*/
+
+#topmain {
+    margin-bottom: 120px;
+}
+.wrapper {
+    padding: 0 1.5rem;
+    width: 100%;
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+.top-contents {
+    position: relative;
+    max-width: 1080px;
+    height: 550px;
+    margin-bottom: 120px;
+    @media (max-width: 780px) {
+        height: 300px;
+    }
+}
+.topmain-text-s {
+    position: absolute;
+    top: 320px;
+    left: 0;
+    z-index: 2;
+    display: block;
+    font-size: 18px;
+    font-weight: normal;
+    letter-spacing: 0.15rem;
+    white-space: nowrap;    // 横に突っ切る
+    @media (max-width: 780px) {
+        font-size: 12px;
+        top: 270px;
+        letter-spacing: .1rem;
+    }
+}
+.topmain-text-l {
+    position: absolute;
+    top: 360px;
+    left: 0;
+    z-index: 2;
+    display: block;
+    font-size: 70px;
+    white-space: nowrap;
+    margin: 0;
+    margin-top: 20px;
+    @media (max-width: 780px) {
+        top: 210px;
+        font-size: 2.4rem;
+        letter-spacing: 2.5px;
+    }
+}
+.main-visual {
+    position: absolute;
+    width: 700px;
+    top: 5px;
+    right: 0;
+    max-width: 100%;
+    @media (max-width: 780px) {
+        width: 300px;
+        top: 40px;
+        right: -10px;
+    }
+}
+
+/**
+* ***************************************
+* works
+* ***************************************
+*/
+
+#topabout {
+    margin: 140px 0;
+    @media (max-width: 780px) {
+        margin: 80px 0;
+    }
+}
+
+.topabout-flexALL {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @media (max-width: 780px) {
+        position: relative;
+    }
+}
+
+.topabout-left {
+    margin-left: 30px;/* @mediaにしたとき、消えてくれない　*/
+    max-width: 100%;
+    @media (max-width: 780px) {
+        position: absolute;
+        top: -25px;
+        left: 0;
+        width: 110px;
+    }
+}
+.topabout-right {
+    max-width: 560px;
+    height: auto;
+    padding: 60px;
+    background-color: #F2F8FC;
+    @media (max-width: 780px) {
+        padding: 40px 25px;
+    }
+}
+
+.title-left {
+    font-size: 36px;
+    letter-spacing: .4rem;
+    line-height: 1;
+    margin-bottom: 0;
+    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-family: 'Playfair', serif;
+    font-family: 'Poppins', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    @media (max-width: 780px) {
+        font-size: 2rem;
+        text-align: right;
+    }
+}
+.title-sub-left {
+    font-size: 16px;
+    letter-spacing: .3rem;
+    margin-top: 0;
+    margin-bottom: 50px;
+    @media (max-width: 780px) {
+        font-size: 12px;
+        text-align: right;
+        margin-bottom: 40px;
+    }
+}
+
+.topabout-text {
+    margin-bottom: 40px;
+    @media (max-width: 780px) {
+        margin-bottom: 30px;
+    }
+}
+
+.view-more-about {
+    float: right;/* これは何　*/
+    @media (max-width: 780px) {
+        margin-bottom: 10px;
+    }
+}
+.view-more-but {
+    display: block;
+    transition: all 0.3s;/* これは何　*/
+}
+
+/**
+ * ***************************************
+ * works
+ * ***************************************
+ */
+
+ #topworks{
+    text-align: center;
+    margin: 0 auto;
+    padding-bottom: 120px;
+    background-color: #F2F8FC;
+ }
+ .title {
+    font-size: 36px;
+    letter-spacing: .4rem;
+    line-height: 1.2;
+    padding-top: 100px;
+    margin-bottom: 0;
+    text-align: center;
+    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-family: 'Playfair', serif;
+    font-family: 'Poppins', sans-serif;
+    font-family: 'Roboto', sans-serif;
+ }
+ .title-sub {
+    font-size: 16px;
+    letter-spacing: .3rem;
+    margin-top: 0;
+    margin-bottom: 70px;
+    text-align: center;
+ }
+ .topworks-flexAii {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 70px;
+ }
+
+ .view-more {
+    margin: 0 auto;
+    display: block;
+    width: 250px;
+    height: 50px;
+    line-height: 50px;
+    border: 1px solid #333;
+    text-align: center;
+    background: #fff;
+    transition: all .3s;/* これは何　*/
+ }
+
+ /**
+ * ***************************************
+ * footer
+ * ***************************************
+ */
+ .footer {
+    font-size: 12px;
+    width: 100%;
+    padding: 40px 0;
+    background-color: #BDD3E8;
+    text-align: center;
+    color: #fff;
+ }
